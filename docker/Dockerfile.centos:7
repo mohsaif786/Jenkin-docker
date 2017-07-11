@@ -10,8 +10,9 @@ RUN yum -y update && \
     ruby \
     rubygem-minitest \
     perl-Digest-SHA \
-    java-1.8.0-openjdk-devel \
-    wget
+    java-1.8.0-openjdk-devel 
+
+RUN yum remove -y   wget
 
 # create jenkins user, make sudo
 #ARG JENKINS_GID=1999
