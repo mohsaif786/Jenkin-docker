@@ -10,18 +10,19 @@ RUN yum -y update && \
     ruby \
     rubygem-minitest \
     perl-Digest-SHA \
-    java-1.8.0-openjdk-devel
+    java-1.8.0-openjdk-devel \
+    wget
 
 # create jenkins user, make sudo
 #ARG JENKINS_GID=1999
 #ARG JENKINS_UID=1999
 #RUN groupadd -g $JENKINS_GID jenkins && \
-    useradd -m -d /home/jenkins -u $JENKINS_UID -g jenkins -s /bin/bash jenkins && \
-    echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+#    useradd -m -d /home/jenkins -u $JENKINS_UID -g jenkins -s /bin/bash jenkins && \
+#    echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # sudo defaults to requiretty on centos7
 RUN sed -i  's/Defaults    requiretty/Defaults !requiretty/' /etc/sudoers
 
-USER jenkins
-COPY docker/scripts/docker.install.linuxbrew /tmp/
-RUN /bin/bash /tmp/docker.install.linuxbrew
+#USER jenkins
+#COPY docker/scripts/docker.install.linuxbrew /tmp/
+#RUN /bin/bash /tmp/docker.install.linuxbrew
